@@ -29,6 +29,8 @@ body {
     line-height: 1.5;
 }
 
+input{font:inherit;}
+
 /* layout */
 
 .page {
@@ -40,29 +42,36 @@ body {
     width: 200px;
     display: flex;
     flex-direction: column;
+    background-color: #D9D9D9;
 }
 
 .page>main {
     flex-grow: 1;
-    border: 1px solid green;
+    border: 1px solid #B72712;
+    padding: 30px;
+    background-color: #FAFAFA;
 }
 
 .newsong {
+    color: #fff;
+    font-size: 16px;
     text-align: center;
     padding: 10px;
 }
 
-.newsong.actice {
-    background: #d4d4d4;
+.newsong.active {
+    background: #B72712;
+}
+#songList-container{
+    flex-grow: 1;    
 }
 .songList {
     text-align: left;
     border-top: 1px solid #999;
-    flex-grow: 1;
 }
 
 .songList>li {
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #fff;
     padding: 10px;
 }
 
@@ -72,7 +81,7 @@ body {
 
 .dragArea {
     border-radius: 20px;
-    border: 2px dashed #ddd;
+    border: 2px dashed #fff;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -85,5 +94,29 @@ body {
     width: 100px;
     height: 50px;
     border-radius:4px;
-    background-color: #ddd;
+    color: #fff;
+    padding: 5px;
+    background-color: #B72712;
+}
+
+.page > main > form{
+    font-size: 14px;
+    width: 350px;
+}
+.page > main > form  input{
+    margin: 10px;
+    padding: 5px 3px;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+}
+.page > main > form  button{
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    background-color: #B72712;
+    color: #fff;
+}
+.page > main > form div.row:nth-child(4){
+    text-align: center;
 }
