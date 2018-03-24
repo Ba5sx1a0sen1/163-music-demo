@@ -4,7 +4,7 @@ window.eventHub = {
         'xx都市报': [],
     },//hash 创建多个桶
     emit(eventName,data) { //发布
-        console.log('事件发布')
+        // console.log('事件发布')
         for(let key in this.events){
             if(key === eventName){
                 let callbackList = this.events[key]
