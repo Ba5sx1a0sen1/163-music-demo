@@ -76,7 +76,8 @@ input{font:inherit;}
 }
 
 .songList>li.active {
-    background: #d4d4d4;
+    background: #B72712;
+    color: #fff;
 }
 
 .dragArea {
