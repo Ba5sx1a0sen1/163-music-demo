@@ -69,6 +69,11 @@
                 console.log('表单订阅成功')
                 this.view.render(data)
             })
+            window.eventHub.on('select',(data)=>{
+                this.model.data = data
+                this.view.render(this.model.data)
+                console.log(data)
+            })
         },
         reset(data) {
             this.view.render(data)
