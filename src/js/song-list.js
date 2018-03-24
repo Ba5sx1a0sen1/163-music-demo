@@ -33,7 +33,6 @@
             var query = new AV.Query('Song')
             return query.find().then((songs) => {
                 this.data.songs = songs.map((song) => {
-                    console.log(song)
                     return { id: song.id, ...song.attributes }
                 })
                 return songs
@@ -65,10 +64,6 @@
             })
         },
         bindEventHub() {
-            window.eventHub.on('upload', () => {
-                console.log('歌单阅成功')
-                this.view.clearActive()
-            })
             window.eventHub.on('create', (songData) => {
                 this.model.data.songs.push(songData)
                 this.view.render(this.model.data)

@@ -69,20 +69,19 @@
             this.model = model
             this.view.render(this.model.data) //this是this.view 调用得到前面定义的函数
             this.bindEvents()
-            window.eventHub.on('upload', (data) => {
-                console.log('表单订阅成功')
-                this.view.render(data)
-            })
             window.eventHub.on('select',(data)=>{
                 this.model.data = data
                 this.view.render(this.model.data)
-                console.log(data)
             })
             window.eventHub.on('new',(data)=>{
-                this.model.data = {
-                    name:'',url:'',id:'',singer:''
+                if(this.model.data.id){
+                    this.model.data = {
+                        name:'',url:'',id:'',singer:''
+                    }
+                }else{
+                    Object.assign(this.model.data,data) //留下自定义bug
                 }
-                this.view.render(data)
+                this.view.render(this.model.data)
             })
         },
         reset(data) {
@@ -91,6 +90,8 @@
         bindEvents() {
             $(this.view.el).on('submit', 'form', (e) => {
                 e.preventDefault()
+
+
                 let need = ['name', 'singer', 'url']
                 let data = {}
                 need.map((string) => {

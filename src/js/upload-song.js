@@ -53,7 +53,7 @@
                         // fileLink.textContent = sourceLink
                         // fileName.textContent = response.key
                         console.log(sourceLink)
-                        window.eventHub.emit('upload',{
+                        window.eventHub.emit('new',{
                             name:response.key,
                             url:sourceLink
                         })
