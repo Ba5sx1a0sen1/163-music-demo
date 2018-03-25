@@ -12,7 +12,7 @@
 <body>
     <div class="page tabs">
         <div class="sticky">
-            <section class="topbar">
+            <section  class="topbar">
                 <div class="logo">
                     <svg class="topsvg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 284 50">
                         <g fill="#fff">
@@ -46,22 +46,22 @@
                 </div>
                 <a href="#">下载APP</a>
             </section>
-            <section class="globalTabs">
+            <section id="tabs" class="globalTabs">
                 <ol class="tabs-nav">
-                    <li class=active>
-                        <div class="text"> 推荐音乐 </div>
+                    <li class=active data-tabName='page-1'>
+                        <div class="text" > 推荐音乐 </div>
                     </li>
-                    <li>
+                    <li data-tabName='page-2'>
                         <div class="text">热歌榜</div>
                     </li>
-                    <li>
+                    <li data-tabName='page-3'>
                         <div class="text">搜索</div>
                     </li>
                 </ol>
             </section>
         </div>
         <ol class="tab-content noCollapse">
-            <li class="page-1 active">
+            <li class="page-1 active" >
                 <section class="playlists">
                     <h2 class="sectionTitle">推荐歌单</h2>
                     <ol class="songs">
@@ -152,13 +152,22 @@
                     </div>
                 </section>
             </li>
-            <li class="page-2">page 2</li>
-            <li class="page-3">
+            <li class="page-2" >page 2</li>
+            <li class="page-3" >
                 <input id="search" type="text" style="background:#EBECEC;">
                 <ol id="searchResult"></ol>
             </li>
         </ol>
     </div>
+
+    <script src="../node_modules/leancloud-storage/dist/av-min.js"></script>
+    <script src="./js/initializers/av.js"></script>
+    <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="./js/admin/event-hub.js"></script>
+    <script src="./js/index/tabs.js"></script>
+    <script src="./js/index/page1.js"></script>
+    <script src="./js/index/page2.js"></script>
+    <script src="./js/index/page3.js"></script>    
 </body>
 
 </html>
