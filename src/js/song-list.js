@@ -10,7 +10,9 @@
             $el.html(this.template)
             let { songs } = data
             let liList = songs.map((song) => {
-                return $('<li></li>').text(song.name).attr('data-song-id',song.id)
+                let $li =  $('<li></li>').text(song.name).attr('data-song-id',song.id)
+                if(song.id === data.selectedSongId) $li.addClass('active')
+                return $li
             })
             $el.find('ul').empty()
             liList.map((domli) => {
@@ -27,7 +29,8 @@
     }
     let model = {
         data: {
-            songs: []
+            songs: [],
+            selectedSongId:undefined
         },
         find() { //获取歌曲列表
             var query = new AV.Query('Song')
@@ -50,8 +53,10 @@
         },
         bindEvents() {
             $(this.view.el).on('click','li',(e)=>{
-                this.view.activeItem(e.currentTarget)
                 let songId = e.currentTarget.getAttribute('data-song-id')
+                this.model.data.selectedSongId = songId
+                this.view.render(this.model.data)
+                
                 let data
                 let songs = this.model.data.songs
                 for(let i = 0;i<songs.length;i++){
