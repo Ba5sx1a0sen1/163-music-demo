@@ -23,13 +23,19 @@
             </div>
             <div class="row">
                 <label>
+                    封面
+                </label>
+                <input name="cover" type="text" value="__cover__">                
+            </div>
+            <div class="row">
+                <label>
                     <button type='submit'>保存</button>
                 </label>
             </div>
         </form>
         `,
         render(data = {}) {
-            let placeholders = ['name', 'singer', 'url']
+            let placeholders = ['name', 'singer', 'url','cover','id']
             let html = this.template
             placeholders.map((string) => {
                 html = html.replace(`__${string}__`, data[string] || ``)
@@ -46,13 +52,14 @@
         }
     }
     let model = {
-        data: { name: '', singer: '', url: '', id: '' },
+        data: { name: '', singer: '', url: '', id: '',cover:'' },
         create(data) {
             var Song = AV.Object.extend('Song');
             var song = new Song();
             song.set('name', data.name);
             song.set('singer', data.singer);
             song.set('url', data.url);
+            song.set('cover', data.cover);            
             return song.save().then((newSong) => {
                 let { id, attributes } = newSong
                 // Object.assign(this.data,{id,...attributes}) 使用到了旧的内存，要结合深拷贝来做
@@ -67,6 +74,7 @@
             song.set('name', data.name);
             song.set('singer',data.singer)
             song.set('url',data.url)
+            song.set('cover',data.cover)            
             return song.save().then((Response)=>{
                 Object.assign(this.data,data)
                 return Response
@@ -98,7 +106,7 @@
             this.view.render(data)
         },
         create() {
-            let need = ['name', 'singer', 'url']
+            let need = ['name', 'singer', 'url','cover']
             let data = {}
             need.map((string) => {
                 data[string] = $(this.view.el).find(`[name=${string}]`).val()
@@ -110,7 +118,7 @@
                 })
         },
         update(){
-            let need = ['name', 'singer', 'url']
+            let need = ['name', 'singer', 'url','cover']
             let data = {}
             need.map((string) => {
                 data[string] = $(this.view.el).find(`[name=${string}]`).val()
